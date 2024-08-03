@@ -19,3 +19,16 @@ jobs:
           lhci autorun --disable-network-throttling --disable-cpu-throttling
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LIGHTHOUSE_CHECK_ACCESS_TOKEN }}
+      
+      - name: Ensure .lighthouseci directory exists and is writable
+        run: |
+            if [ -f .lighthouseci ]; then rm .lighthouseci; fi
+            mkdir -p .lighthouseci
+            chmod 755 .lighthouseci
+  
+      - name: Save lighthouse results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+            name: lighthouse-results
+            path: .lighthouseci
