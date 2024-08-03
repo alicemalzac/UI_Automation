@@ -1,6 +1,7 @@
 # Cypress UI Testing with GitHub Actions
 
 [![Checkout](https://github.com/alicemalzac/UI_Automation/actions/workflows/cypress.yml/badge.svg)](https://github.com/alicemalzac/UI_Automation/actions/workflows/cypress.yml)
+[![LH Audits](https://github.com/alicemalzac/UI_Automation/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/alicemalzac/UI_Automation/actions/workflows/lighthouse.yml)
 
 This repository is dedicated to learning how to set up and use GitHub Actions to automate UI testing with Cypress. Cypress is a powerful tool for end-to-end testing, and GitHub Actions provides an easy way to integrate these tests into your CI/CD workflow.
 
