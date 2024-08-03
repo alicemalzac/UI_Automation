@@ -1,8 +1,5 @@
 name: LH Audits 
-on: 
-    pull_request: 
-     branches:
-     - main 
+on: [push]
 jobs:
   run_lighthouse:
     runs-on: ubuntu-latest
@@ -14,29 +11,11 @@ jobs:
         with:
           node-version: 18
       - name: Install Dependencies
-        run: npm install
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      - name: Build 
-        run: npm run build  
-
-      - name: Save lighthouse results
-        if: always() 
-        uses: actions/upload-artifact@v2
-        with:
-            name: lighthouse-results
-            path: .lighthouseci  
-
+        run: |
+          npm install
       - name: Run Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.13.x
           lhci autorun --disable-network-throttling --disable-cpu-throttling
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LIGHTHOUSE_CHECK_ACCESS_TOKEN }}
-      
-            
-    
